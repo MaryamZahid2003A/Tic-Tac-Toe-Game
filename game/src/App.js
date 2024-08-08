@@ -1,11 +1,21 @@
 import logo from './logo.svg';
 import './../node_modules/bootstrap/dist/css/bootstrap.min.css'
-
+import './App.css'
+import Home from './Home';
+import { Route,Routes } from 'react-router-dom';
+import Flip from './Flip';
+import Game from './Game';
 function App() {
   return (
-    <div>
-      
-      <button type="button" class="btn btn-primary">Primary</button>
+    <div >
+      <Routes>
+      <Route path='/' element={<Home/>}/>
+
+        <Route path='/flip' element={<Flip/>}/>
+        <Route path='/game' element={<Game/>}/>
+
+      </Routes>
+    
     </div>
   );
 }
