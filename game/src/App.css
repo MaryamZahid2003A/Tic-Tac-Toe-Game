@@ -3,11 +3,11 @@ body{
 }
 .gridWidth{
   align-items:center;
-  max-width:23rem;
-  height:auto;
-  margin-left:auto;
-  margin-right:auto;
-  margin-top:6%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap:1px;
+  margin-top:10%;
+  width:20rem;
 }
 .XTurn{
   color:black;
@@ -16,7 +16,7 @@ body{
 
 }
 .oTurn{
-  color:red;
+  color:rgb(151, 239, 63);
   font-size:1rem;
   font-weight:bold;
 }
