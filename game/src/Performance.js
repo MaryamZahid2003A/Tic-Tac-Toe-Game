@@ -1,5 +1,6 @@
 import React from 'react'
 import { useLocation } from 'react-router-dom'
+import { Link } from 'react-router-dom';
 
 export default function Performance() {
     const location=useLocation();
@@ -40,6 +41,9 @@ export default function Performance() {
     </tr>
   </tbody>
 </table>
+<Link to='/' className="text-decoration-none" >
+         <p type="button" class=" align-items-center text-danger fs-4 rounded mx-auto d-block text-decoration-none text-center py-5" >Back</p>
+        </Link>
     </div>
   )
 }
