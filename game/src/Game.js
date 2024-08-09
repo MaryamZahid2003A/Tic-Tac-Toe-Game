@@ -14,9 +14,12 @@ export default function Game() {
     const [originalNum,setOriginalNum]=useState(num);
     const [turn,setTurnMessage]=useState('')
     const [tie,setTie]=useState(false)
+    const [total,setTotal]=useState(0)
+    const[tieMatch,setTieMatch]=useState(0);
     // 0 For Head(X) And 1 For Tail(O)
     const check = (turn) => {
         if (cells[turn] === null && !bool) {
+            
             const newArray = [...cells];
             newArray[turn] = currentNum;
             setCells(newArray);
@@ -30,9 +33,13 @@ export default function Game() {
             if ((updatedCells[0] === 0 && updatedCells[4] === 0 && updatedCells[8] === 0) || (updatedCells[0] === 1 && updatedCells[4] === 1 && updatedCells[8] === 1)) {
                 if (currentNum===0){
                     setPlayer1Win(player1Win+1)
+                    setTotal(total+1)
                 }
                 else if (currentNum===1){
                     setPlayer2Win(player2Win+1)
+                    setTotal(total+1)
+
+                   
                 }
                 setBool(true);
 
@@ -41,9 +48,13 @@ export default function Game() {
             else if ((updatedCells[2] === 0 && updatedCells[4] === 0 && updatedCells[6] === 0) || (updatedCells[2] === 1 && updatedCells[4] === 1 && updatedCells[6] === 1)) {
                 if (currentNum===0){
                     setPlayer1Win(player1Win+1)
+                    setTotal(total+1)
+
                 }
                 else if (currentNum===1){
                     setPlayer2Win(player2Win+1)
+                    setTotal(total+1)
+
                 }
                 setBool(true);
                 return;
@@ -51,9 +62,13 @@ export default function Game() {
             else if ((updatedCells[0] === 0 && updatedCells[1] === 0 && updatedCells[2] === 0) || (updatedCells[0] === 1 && updatedCells[1] === 1 && updatedCells[2] === 1)) {
                 if (currentNum===0){
                     setPlayer1Win(player1Win+1)
+                    setTotal(total+1)
+
                 }
                 else if (currentNum===1){
                     setPlayer2Win(player2Win+1)
+                    setTotal(total+1)
+
                 }
                 setBool(true);
                 return;
@@ -61,9 +76,13 @@ export default function Game() {
             else if ((updatedCells[3] === 0 && updatedCells[4] === 0 && updatedCells[5] === 0) || (updatedCells[3] === 1 && updatedCells[4] === 1 && updatedCells[5] === 1)) {
                 if (currentNum===0){
                     setPlayer1Win(player1Win+1)
+                    setTotal(total+1)
+
                 }
                 else if (currentNum===1){
                     setPlayer2Win(player2Win+1)
+                    setTotal(total+1)
+
                 }
                 setBool(true);
                 return;
@@ -71,9 +90,13 @@ export default function Game() {
             else if ((updatedCells[6] === 0 && updatedCells[7] === 0 && updatedCells[8] === 0) || (updatedCells[6] === 1 && updatedCells[7] === 1 && updatedCells[8] === 1)) {
                 if (currentNum===0){
                     setPlayer1Win(player1Win+1)
+                    setTotal(total+1)
+
                 }
                 else if (currentNum===1){
                     setPlayer2Win(player2Win+1)
+                    setTotal(total+1)
+
                 }
                 setBool(true);
                 return;
@@ -81,8 +104,11 @@ export default function Game() {
             else if ((updatedCells[0] === 0 && updatedCells[3] === 0 && updatedCells[6] === 0) || (updatedCells[0] === 1 && updatedCells[3] === 1 && updatedCells[6] === 1)) {
                 if (currentNum===0){
                     setPlayer1Win(player1Win+1)
+                    setTotal(total+1)
+
                 }
                 else if (currentNum===1){
+                    setTotal(total+1)
                     setPlayer2Win(player2Win+1)
                 }
                 setBool(true);
@@ -91,9 +117,13 @@ export default function Game() {
             else if ((updatedCells[1] === 0 && updatedCells[4] === 0 && updatedCells[7] === 0) || (updatedCells[1] === 1 && updatedCells[4] === 1 && updatedCells[7] === 1)) {
                 if (currentNum===0){
                     setPlayer1Win(player1Win+1)
+                    setTotal(total+1)
+
                 }
                 else if (currentNum===1){
                     setPlayer2Win(player2Win+1)
+                    setTotal(total+1)
+
                 }
                 setBool(true);
                 return;
@@ -101,9 +131,13 @@ export default function Game() {
             else if ((updatedCells[2] === 0 && updatedCells[5] === 0 && updatedCells[8] === 0) || (updatedCells[2] === 1 && updatedCells[5] === 1 && updatedCells[8] === 1)) {
                 if (currentNum===0){
                     setPlayer1Win(player1Win+1)
+                    setTotal(total+1)
+
                 }
                 else if (currentNum===1){
                     setPlayer2Win(player2Win+1)
+                    setTotal(total+1)
+
                 }
                 setBool(true);
                 return;
@@ -126,7 +160,10 @@ export default function Game() {
                     cells[7]!==null &&
                     cells[8]!==null && bool===false
                 ){
-                    setTie(true);   
+                    setTie(true);  
+                    setTotal(total+1)
+                    setTieMatch(tieMatch+1)
+
                 }
             }
             checkTie()
@@ -139,9 +176,9 @@ export default function Game() {
             setCurrentNum(originalNum)
             setTie(false);
         }
-        console.log(`original num ${originalNum}`)
-        console.log(`player 1 :  ${player1Win}`)
-       console.log(`player 2 : ${player2Win}`)
+        
+
+        
         
     return (
         <div>
@@ -180,9 +217,17 @@ export default function Game() {
             </div>
         </div>
         <button type="button" class="btn btn-outline-warning align-items-center fs-5 px-5 my-3 rounded mx-auto d-block text-decoration-none" onClick={Reset} >Reset</button>
+        
         <Link to='/' className="text-decoration-none" >
          <button type="button" class="btn btn-outline-warning align-items-center fs-5 px-5 rounded mx-auto d-block text-decoration-none" >New Game</button>
-     </Link>
+        </Link>
+        <Link to='/performance' state={{player1Win, player2Win, total,player1,player2,tieMatch}}>
+        <p type="button" class="text-info align-items-center text-center my-3 rounded mx-auto d-block text-decoration-underline " > Check Performance Table</p>
+                    
+        </Link>
+
+                        
+
     </div>
     );
 }
