@@ -14,9 +14,9 @@ export default function Performance() {
   <thead>
     <tr className='text-center'>
       <th scope="col" className='text-info'></th>
-      <th scope="col" className='text-success'>{player1}</th>
-      <th scope="col" className='text-success'>{player2}</th>
-      <th scope="col" className='text-success'>Total</th>
+      <th scope="col" className='text-warning fs-5'>{player1}</th>
+      <th scope="col" className='text-warning fs-5'>{player2}</th>
+      <th scope="col" className='text-warning fs-5'>Total</th>
     </tr>
   </thead>
   <tbody>
@@ -24,25 +24,25 @@ export default function Performance() {
 
       <th scope="col" className='text-info'>Win</th>
 
-      <td className='text-warning'>{player1Win}</td>
-      <td className='text-warning'>{player2Win}</td>
-      <td className='text-warning'>{total}</td>
+      <td className='text-success fs-5'>{player1Win}</td>
+      <td className='text-success fs-5'>{player2Win}</td>
+      <td className='text-success fs-5'>{total}</td>
     </tr>
     <tr  className='text-center'>
       <th scope="col" className='text-info'>Loss</th>
 
-      <td className='text-warning'>{tieMatch===0 ? total-player1Win : total-tieMatch-player1Win }</td>
-      <td className='text-warning'>{tieMatch===0 ? total-player2Win : total-tieMatch-player2Win }</td>
-      <td className='text-warning'>{total}</td>
+      <td className='text-danger fs-5'>{tieMatch===0 ? total-player1Win : total-tieMatch-player1Win }</td>
+      <td className='text-danger fs-5'>{tieMatch===0 ? total-player2Win : total-tieMatch-player2Win }</td>
+      <td className='text-danger fs-5'>{total}</td>
     </tr>
     <tr  className='text-center'>
       <th scope="col" className='text-info'>Draw</th>
-      <td className='text-warning'>Draw Matches : {tieMatch===0? '0': tieMatch}</td>
+      <td className='text-warning fs-5'>Draw Matches : {tieMatch===0? '0': tieMatch}</td>
     </tr>
   </tbody>
 </table>
 <Link to='/' className="text-decoration-none" >
-         <p type="button" class=" align-items-center text-danger fs-4 rounded mx-auto d-block text-decoration-none text-center py-5" >Back</p>
+         <p type="button" class=" align-items-center text-danger fs-4 rounded mx-auto d-block  text-center py-3" >Back Page</p>
         </Link>
     </div>
   )

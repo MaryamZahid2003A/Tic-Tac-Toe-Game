@@ -1,18 +1,27 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { useState } from 'react'
+import {  useNavigate } from 'react-router-dom'
 export default function Home() {
     const [num,setNum]=useState(0);
     const [player1,setPlayer1]=useState('')
     const [player2,setPlayer2]=useState('')
+    const navigate = useNavigate();
     const randomNumber=(min,max)=>{
         return Math.floor(Math.random()*(max-min+1)+min)
     }
     const flipButton=()=>{
-            setNum(randomNumber(0,1))
+      if (player1 && player2 ){
+        setNum(randomNumber(0,1))
+        navigate('/flip', { state: { num, player1, player2 } });
+      }
+      else{
+        alert('Please Enter Both Player Names')
+      }
     }
   return (
     <div className='container'>
+      <form></form>
         <img src='https://as2.ftcdn.net/v2/jpg/06/08/69/33/1000_F_608693380_FMOM8H6Bn2GP7A56C0n1ztAeOwm9voy1.jpg' alt='image' height='500' width='500' className='img-fluid rounded mx-auto d-block  my-5 row'/>
         <div class="mb-3 row gap-3 rounded  ms-5">
             <div className='col-md '>
@@ -40,9 +49,8 @@ export default function Home() {
              />
             </div>
          </div>
-         <Link to='/flip' state={{num,player1,player2}} className="text-decoration-none">
          <button type="button" class="btn btn-outline-warning align-items-center fs-5 p-2 my-5 rounded mx-auto d-block" onClick={flipButton}>Flip The Coin</button>
-         </Link>
+      
     </div>
   )
 }
